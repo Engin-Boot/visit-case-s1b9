@@ -1,4 +1,4 @@
-name: Build and Run
+name: Static Analysis
 
 on:
   push:
@@ -16,15 +16,6 @@ jobs:
     
     - name: install cppcheck static analysis
       run: sudo apt-get update && sudo apt-get install -y cppcheck
-      
-    - name: build
-      run: g++ -Wall -Wextra -Werror --coverage -o testchecker *.cpp
-      
+            
     - name: static analysis
       run: cppcheck --enable=all --error-exitcode=1 .
-      
-    - name: run
-      run: ./testchecker
-    
-    - name: coverage report
-      run: gcov -r *.cpp
