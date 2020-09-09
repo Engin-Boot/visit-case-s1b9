@@ -14,12 +14,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: build
-      run: g++ -Wall -Wextra -Werror --coverage -o testchecker *.cpp
+    - name: build sender
+      run: g++ -Wall -Wextra -Werror --coverage -o SenderOutput Sender/*.cpp
       
-    - name: run
-      run: ./testchecker
+    - name: run sender
+      run: ./SenderOutput
       
-    - name: coverage report
-      run: gcov -r *.cpp  
-    
+    - name: sender coverage report
+      run: gcov -r Sender/*.cpp  
+      
+    - name: build receiver
+      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverOutput Receiver/*.cpp
+      
+    - name: run receiver
+      run: ./ReceiverOutput
+      
+    - name: receiver coverage report
+      run: gcov -r Receiver/*.cpp  
