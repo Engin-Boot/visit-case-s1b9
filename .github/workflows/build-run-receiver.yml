@@ -1,0 +1,24 @@
+name: Build Sender
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: build receiver
+      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverOutput Receiver/*.cpp
+      
+    - name: run receiver
+      run: ./ReceiverOutput
+      
+    - name: receiver coverage report
+      run: gcov -r Receiver/*.cpp  
