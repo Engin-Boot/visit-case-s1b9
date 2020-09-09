@@ -2,7 +2,7 @@ name: Build Run Sender
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Sender ]
   pull_request:
     branches: [ master ]
 
