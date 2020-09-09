@@ -1,0 +1,26 @@
+name: Complexity and 
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install lizard
+      run: pip install lizard
+      
+    - name: Install cppcheck static analysis
+      run: sudo apt-get update && sudo apt-get install -y cppcheck
+
+    - name: Limit Complexity
+      run: $HOME/.local/bin/lizard --CCN 3 -x"./catch.hpp"
+    
+    - name: Static Analysis
+      run: cppcheck --enable=all --error-exitcode=1 --suppress=missingIncludeSystem .
