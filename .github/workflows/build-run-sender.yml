@@ -1,4 +1,4 @@
-name: Build and Run
+name: Build Run Sender
 
 on:
   push:
@@ -22,12 +22,3 @@ jobs:
       
     - name: sender coverage report
       run: gcov -r Sender/*.cpp  
-      
-    - name: build receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverOutput Receiver/*.cpp
-      
-    - name: run receiver
-      run: ./ReceiverOutput
-      
-    - name: receiver coverage report
-      run: gcov -r Receiver/*.cpp  
