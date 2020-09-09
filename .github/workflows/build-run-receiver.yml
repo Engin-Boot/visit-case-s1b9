@@ -2,7 +2,7 @@ name: Build Run Receiver
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Receiver, master ]
   pull_request:
     branches: [ master ]
 
@@ -21,4 +21,4 @@ jobs:
       run: ./ReceiverOutput
       
     - name: receiver coverage report
-      run: gcov -r Receiver/*.cpp  
+      run: gcov -r --object-directory . Receiver/*.cpp  
