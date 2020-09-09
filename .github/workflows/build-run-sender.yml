@@ -2,7 +2,7 @@ name: Build Run Sender
 
 on:
   push:
-    branches: [ Sender ]
+    branches: [ Sender, master ]
   pull_request:
     branches: [ master ]
 
@@ -21,4 +21,4 @@ jobs:
       run: ./SenderOutput
       
     - name: sender coverage report
-      run: gcov -r Sender/*.cpp  
+      run: gcov -r --object-directory . Sender/*.cpp  
