@@ -19,4 +19,7 @@ jobs:
       
     - name: run
       run: ./testchecker
+      
+    - name: coverage report
+      run: gcov -r *.cpp  
     
