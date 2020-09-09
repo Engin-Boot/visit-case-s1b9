@@ -1,8 +1,8 @@
-name: Complexity and 
+name: Complexity and Static Analysis
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Receiver, Sender, master ]
   pull_request:
     branches: [ master ]
 
