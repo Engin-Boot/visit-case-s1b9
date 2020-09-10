@@ -21,9 +21,6 @@ jobs:
 
     - name: Limit Complexity
       run: $HOME/.local/bin/lizard --CCN 3 -x"./catch.hpp"
-
-    - name: run
-      run: ./SenderOutput | ./RecieverOutput
     
     - name: Static Analysis
       run: cppcheck --enable=all --error-exitcode=1 --suppress=missingIncludeSystem .
