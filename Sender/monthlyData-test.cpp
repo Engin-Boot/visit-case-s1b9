@@ -1,9 +1,9 @@
-
+/*
 #define CATCH_CONFIG_MAIN
 
 #include "../catch.hpp"
 #include "monthlyData.h"
-/*
+
 TEST_CASE("IsLeapYear-Tests")
 {	REQUIRE(IsLeapYear(2015) == false); 
 	REQUIRE(IsLeapYear(1970) == false);
