@@ -1,19 +1,23 @@
 #include"fileReader.h"
 
-FileReader::FileReader(std::string filePathName):_fileName("./Sender/SafeFile.csv")
+FileReader::FileReader(std::string filePathName) :_fileName("./Sender/SafeFile.csv"), ReadIsGood(false)
 {
-	_filePtr.open(filePathName);
-	if (_filePtr.good())
+	std::ifstream tempPtr;
+	tempPtr.open(filePathName);
+	if (tempPtr.good())
 		_fileName = filePathName;
-	
-	_filePtr.close();
-	_filePtr.open(_fileName);
+
+	tempPtr.close();
+
+	ReadIsGood = ReadFile();
 }
 
 std::string FileReader::GetFileName() { return _fileName; }
 
 bool FileReader::ReadFile()
 {
+	_filePtr.open(_fileName);
+
 	if (_filePtr.good())
 	{
 		while (!_filePtr.eof())
@@ -26,6 +30,5 @@ bool FileReader::ReadFile()
 	}
 	return false;
 }
-bool FileReader::ReadFileIsGood() { return ReadFile(); }
 
 std::vector<std::string> FileReader::GetFileLines() { return _fileLines; }

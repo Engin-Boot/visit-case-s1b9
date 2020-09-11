@@ -9,12 +9,12 @@ private:
 	std::ifstream _filePtr;
 
 	std::vector<std::string> _fileLines;
-
+	
 	bool ReadFile();
 
 public:
+	bool ReadIsGood;
 	explicit FileReader(std::string);
 	std::string GetFileName();
 	std::vector<std::string> GetFileLines();
-	bool ReadFileIsGood();
 };

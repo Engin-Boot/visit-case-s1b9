@@ -12,24 +12,23 @@ TEST_CASE("TwoArg Constructor")
 TEST_CASE("ReturnFile is Good")
 {
 	FileReader reader1("random");
-	REQUIRE(reader1.ReadFileIsGood() == true);
+	REQUIRE(reader1.ReadIsGood == true);
 
 	FileReader reader2("./test-data/input.csv");
-	REQUIRE(reader2.ReadFileIsGood() == true);
+	REQUIRE(reader2.ReadIsGood == true);
 }
 
 TEST_CASE("ReadFile")
 {
 	FileReader reader1("random");
-	reader1.ReadFileIsGood();
 	std::vector<std::string> lines1 = reader1.GetFileLines();
 	REQUIRE(lines1[0].compare("This,is,a,safe,file") == 0);
 	REQUIRE(lines1[1].compare("It,has,two,lines") == 0);
 	REQUIRE(lines1.size() == 2);
 
 	FileReader reader2("./test-data/input.csv");
-	reader2.ReadFileIsGood();
 	std::vector<std::string> lines2 = reader2.GetFileLines();
+
 	REQUIRE(lines2[0].compare("dd mm yyyy,hh mm ss") == 0);
 	REQUIRE(lines2[1].compare("08,2020") == 0);
 	REQUIRE(lines2[2].compare("Date,Count") == 0);
