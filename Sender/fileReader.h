@@ -13,7 +13,7 @@ private:
 	bool ReadFile();
 
 public:
-	FileReader(std::string);
+	explicit FileReader(std::string);
 	std::string GetFileName();
 	std::vector<std::string> GetFileLines();
 	bool ReadFileIsGood();
