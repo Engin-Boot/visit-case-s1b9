@@ -29,7 +29,7 @@ bool MonthlyData::YearIsValid(int year)
 
 void MonthlyData::Update_no_of_days()
 {
-	_no_of_days = DaysInTheMonth[_month - 1];
+	_no_of_days = DaysInTheMonth[(short unsigned int)_month - 1];
 	
 	if(_month==2)
 		if(IsLeapYear(_year))
@@ -38,7 +38,7 @@ void MonthlyData::Update_no_of_days()
 
 void MonthlyData::UpdateFootfallPerDay(std::vector<int> footfall_per_day)
 {
-	if (footfall_per_day.size() == _no_of_days)
+	if (footfall_per_day.size() == (std::vector<int>::size_type)_no_of_days)
 		_footfall_per_day = footfall_per_day;
 }
 int  MonthlyData::GetMonth() { return _month; }
