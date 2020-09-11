@@ -1,7 +1,9 @@
-//#define CATCH_CONFIG_MAIN
+
+#define CATCH_CONFIG_MAIN
+
 #include "../catch.hpp"
 #include "monthlyData.h"
-
+/*
 TEST_CASE("IsLeapYear-Tests")
 {	REQUIRE(IsLeapYear(2015) == false); 
 	REQUIRE(IsLeapYear(1970) == false);
@@ -48,3 +50,4 @@ TEST_CASE("Update_no_of_days")
 	REQUIRE(test2.GetYear() == 2011);
 	REQUIRE(test2.GetNoOfDays() == 28);
 }
+*/
