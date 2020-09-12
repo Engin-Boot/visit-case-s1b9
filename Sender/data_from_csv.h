@@ -23,7 +23,7 @@ private:
 	void UpdateFootfallValues();
 
 public:
-	DataFrom_csv(std::string);
+	explicit DataFrom_csv(std::string);
 	std::string GetOutputFormat();
 	int GetMonth();
 	int GetYear();
