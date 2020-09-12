@@ -1,6 +1,6 @@
 #include"data_from_csv.h"
 
-DataFrom_csv::DataFrom_csv(std::string fileName): _csvReader(fileName)
+DataFrom_csv::DataFrom_csv(std::string& fileName): _csvReader(fileName)
 {	if (_csvReader.ReadIsGood)
 	{	_file_lines = _csvReader.GetFileLines();
 		FormatLines_csv(); 

@@ -17,7 +17,8 @@ TEST_CASE("Split String function")
 
 TEST_CASE("DataFrom_csv")
 {
-	DataFrom_csv aug_data("./test-data/input.csv");
+	std::string fileName = "./test-data/input.csv";
+	DataFrom_csv aug_data(fileName);
 	std::vector<int> footfalls
 	= { 81,21,37,27,23,98,45,37,31,25,58,104,64,78,20,68,60,73,30,28,13,56,51,56,67,36,77,70,45,68,83 };
 
