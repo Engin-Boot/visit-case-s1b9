@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 #include<vector>
+#include<algorithm>
 
 #define DATE_FORMAT_LENGTH 10
 #define TIME_FORMAT_LENGTH 5
