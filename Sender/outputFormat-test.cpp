@@ -1,4 +1,4 @@
-#define TEST_OUTPUT_FORMAT
+//#define TEST_OUTPUT_FORMAT
 
 #ifdef TEST_OUTPUT_FORMAT
 
