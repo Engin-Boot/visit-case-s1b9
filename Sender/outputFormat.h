@@ -26,8 +26,8 @@ private:
 
 public:
 	OutputFormat();
-	explicit OutputFormat(std::string);
-	void UpdateFormat(std::string);
+	explicit OutputFormat(const char*);
+	void UpdateFormat(const char *);
 	std::string Get_Format();
 	std::string Get_DateFormat();
 	std::string Get_TimeFormat();

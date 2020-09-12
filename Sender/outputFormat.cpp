@@ -9,13 +9,13 @@ std::vector<std::string> TimeFormat
 OutputFormat::OutputFormat() :
 	_date_format("dd mm yyyy"), _time_format("hh mm"), _total_format("dd mm yyyy hh mm") {}
 
-OutputFormat::OutputFormat(std::string formatFromFile) :
+OutputFormat::OutputFormat(const char* formatFromFile) :
 	_date_format("dd mm yyyy"), _time_format("hh mm"), _total_format("dd mm yyyy hh mm")
 {
 	UpdateFormat(formatFromFile);
 }
 
-void OutputFormat::UpdateFormat(std::string formatFromFile)
+void OutputFormat::UpdateFormat(const char* formatFromFile)
 {
 	if (FormatIsValid(formatFromFile))
 		_total_format = _date_format + SEPARATOR + _time_format;
