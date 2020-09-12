@@ -29,7 +29,7 @@ bool MonthlyData::YearIsValid(int year)
 
 void MonthlyData::Update_no_of_days()
 {
-	_no_of_days = DaysInTheMonth[(short unsigned int)_month - 1];
+	_no_of_days = DaysInTheMonth[_month - 1];
 	
 	if(_month==2)
 		if(IsLeapYear(_year))
