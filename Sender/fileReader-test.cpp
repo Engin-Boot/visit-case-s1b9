@@ -1,3 +1,4 @@
+
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
 #include "fileReader.h"
@@ -29,7 +30,7 @@ TEST_CASE("ReadFile")
 	FileReader reader2("./test-data/input.csv");
 	std::vector<std::string> lines2 = reader2.GetFileLines();
 
-	REQUIRE(lines2[0].compare("dd mm yyyy,hh mm ss") == 0);
+	REQUIRE(lines2[0].compare("dd mm yyyy,hh mm") == 0);
 	REQUIRE(lines2[1].compare("08,2020") == 0);
 	REQUIRE(lines2[2].compare("Date,Count") == 0);
 	REQUIRE(lines2[3].compare("1,81") == 0);
