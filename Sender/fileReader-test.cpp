@@ -1,3 +1,6 @@
+//#define TEST_FILE_READER
+
+#ifdef TEST_FILE_READER
 
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
@@ -38,3 +41,4 @@ TEST_CASE("ReadFile")
 	REQUIRE(lines2.size() == 34);
 }
 
+#endif
