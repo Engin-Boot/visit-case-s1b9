@@ -25,7 +25,9 @@ private:
 	bool TimeFormatIsValid(std::string);
 
 public:
+	OutputFormat();
 	explicit OutputFormat(std::string);
+	void UpdateFormat(std::string);
 	std::string Get_Format();
 	std::string Get_DateFormat();
 	std::string Get_TimeFormat();
