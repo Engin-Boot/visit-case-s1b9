@@ -16,7 +16,6 @@ int RandomGenerator::operator ()()
     return return_number;
 }
 
-
 std::vector<int> generateRandomNumbers(int size)
 {
     //srand(time(0));

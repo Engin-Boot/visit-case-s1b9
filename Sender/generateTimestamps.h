@@ -7,7 +7,9 @@
 
 #define MINUTES_PER_DAY 1440.0
 
-class RandomGenerator {
+class RandomGenerator 
+{
+private:
     unsigned long _rand_seed;
     std::default_random_engine _generator;
     std::normal_distribution<double> _distribution;
@@ -15,7 +17,6 @@ class RandomGenerator {
     double _max;
 public:
     RandomGenerator(double min, double max, unsigned long seed);
-
     int operator ()();
 };
 
