@@ -37,7 +37,7 @@ std::vector<int> generateRandomNumbers(int size)
 
 DayTimestamps::DayTimestamps(std::vector<int> timestamps)
 {
-    for (int i = 0; i < timestamps.size(); i++)
+    for (unsigned int i = 0; i < timestamps.size(); i++)
     {
         _time[0].push_back(timestamps[i] / 60);
         _time[1].push_back(timestamps[i] % 60);

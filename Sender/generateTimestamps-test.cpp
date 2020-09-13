@@ -8,7 +8,7 @@
 
 TEST_CASE("GenerateRandomNumbers-size")
 {
-	int size = 10;
+	unsigned int size = 10;
 	REQUIRE(generateRandomNumbers(size).size() == size);
 }
 
