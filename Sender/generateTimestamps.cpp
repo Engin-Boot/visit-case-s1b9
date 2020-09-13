@@ -28,6 +28,7 @@ std::vector<int> generateRandomNumbers(int size)
     for (int i = 0; i < size; i++)
         numbers.push_back(gen());
 
+    std::sort(numbers.begin(), numbers.end());
     return numbers;
 }
 
