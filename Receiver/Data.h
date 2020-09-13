@@ -1,6 +1,8 @@
 #pragma once
 #include<string>
 #include<vector>
+#include<iostream>
+#include<sstream>
 using namespace std;
 
 class Data
@@ -19,5 +21,7 @@ public:
 
 	void getSenderData();
 	void storeInBuffer(std::string, std::string);
+	void displayBuffer();
+	void checkDataformat_AddtoBuffer(std::string, std::string,std::vector<int>,int,int,int,int,int);
 };
 
