@@ -6,12 +6,12 @@ RandomGenerator::RandomGenerator(double min, double max, unsigned long seed) :
 int RandomGenerator::operator ()()
 {
     int return_number = 0;
-    double gen_number = 0;
     while (!return_number) 
     {
-            gen_number = this->_distribution(_generator);
-            if (numberIsInRange(gen_number))
-                return_number = (int)gen_number;
+        double gen_number = 0;
+        gen_number = this->_distribution(_generator);
+        if (numberIsInRange(gen_number))
+            return_number = (int)gen_number;
     }
     return return_number;
 }

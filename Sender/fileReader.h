@@ -15,6 +15,6 @@ private:
 public:
 	bool ReadIsGood;
 	explicit FileReader(std::string);
-	std::string GetFileName();
+	//std::string GetFileName();
 	std::vector<std::string> GetFileLines();
 };

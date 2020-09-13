@@ -12,7 +12,7 @@ FileReader::FileReader(std::string filePathName) :_fileName("./Sender/SafeFile.c
 	ReadIsGood = ReadFile();
 }
 
-std::string FileReader::GetFileName() { return _fileName; }
+//std::string FileReader::GetFileName() { return _fileName; }
 
 bool FileReader::ReadFile()
 {
