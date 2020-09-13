@@ -4,7 +4,7 @@
 #include<random>
 #include<time.h>
 #include<algorithm>
-#include<iostream>
+
 #define MINUTES_PER_DAY 1440.0
 
 class RandomGenerator 
@@ -24,3 +24,14 @@ public:
 };
 
 std::vector<int> generateRandomNumbers(int size);
+
+class DayTimestamps
+{
+private:
+    std::vector<int> _time[2];
+
+public:
+    explicit DayTimestamps(std::vector<int>);
+    std::vector<int> GetDailyHours();
+    std::vector<int> GetDailyMinutes();
+};
