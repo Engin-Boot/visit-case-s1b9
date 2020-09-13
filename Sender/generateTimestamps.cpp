@@ -10,18 +10,20 @@ int RandomGenerator::operator ()()
     while (!return_number) 
     {
             gen_number = this->_distribution(_generator);
-            if (gen_number >= this->_min && gen_number <= this->_max)
+            if (numberIsInRange(gen_number))
                 return_number = (int)gen_number;
     }
     return return_number;
 }
 
+bool  RandomGenerator::numberIsInRange(double num) { return ((_min <= num) && (num <= _max)); }
+
 std::vector<int> generateRandomNumbers(int size)
 {
-    //srand(time(0));
-    //int random_seed_value = (rand() % 10);
-    //RandomGenerator gen(0.0, MINUTES_PER_DAY, (unsigned long)random_seed_value);
-    RandomGenerator gen(0.0, MINUTES_PER_DAY, 1);
+    srand(time(0));
+    int random_seed_value = (rand() % 10);
+    RandomGenerator gen(0.0, MINUTES_PER_DAY, (unsigned long)random_seed_value);
+    //RandomGenerator gen(0.0, MINUTES_PER_DAY, 1);
 
     std::vector<int> numbers;
 

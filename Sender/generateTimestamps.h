@@ -15,6 +15,9 @@ private:
     double _min;
     double _max;
     std::normal_distribution<double> _distribution;
+
+    bool numberIsInRange(double num);
+
 public:
     RandomGenerator(double min, double max, unsigned long seed);
     int operator ()();
