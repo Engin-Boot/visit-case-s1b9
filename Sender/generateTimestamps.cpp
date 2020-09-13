@@ -1,7 +1,7 @@
 #include "generateTimestamps.h"
 
 RandomGenerator::RandomGenerator(double min, double max, unsigned long seed) :
-        _distribution((min + max) / 2, (max - min) / 4), _min(min), _max(max),_rand_seed(seed), _generator(seed) {}
+        _rand_seed(seed), _generator(seed), _min(min), _max(max), _distribution((min + max) / 2, (max - min) / 4) {}
 
 int RandomGenerator::operator ()()
 {
