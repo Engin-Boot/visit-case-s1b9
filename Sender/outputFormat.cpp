@@ -4,13 +4,13 @@ std::vector<std::string> DateFormat
 = { "dd mm yyyy", "mm dd yyyy", "yyyy mm dd", "yyyy dd mm" };
 
 std::vector<std::string> TimeFormat
-= { "hh mm" };
+= { "hh mn" };
 
 OutputFormat::OutputFormat() :
-	_date_format("dd mm yyyy"), _time_format("hh mm"), _total_format("dd mm yyyy hh mm") {}
+	_date_format("dd mm yyyy"), _time_format("hh mn"), _total_format("dd mm yyyy hh mn") {}
 
 OutputFormat::OutputFormat(const char* formatFromFile) :
-	_date_format("dd mm yyyy"), _time_format("hh mm"), _total_format("dd mm yyyy hh mm")
+	_date_format("dd mm yyyy"), _time_format("hh mn"), _total_format("dd mm yyyy hh mn")
 {
 	UpdateFormat(formatFromFile);
 }
