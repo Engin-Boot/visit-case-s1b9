@@ -2,9 +2,9 @@
 #include<vector>
 #include<string>
 #include<random>
-#include<iostream>
 #include<time.h>
-
+#include<algorithm>
+#include<iostream>
 #define MINUTES_PER_DAY 1440.0
 
 class RandomGenerator 
