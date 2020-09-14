@@ -22,10 +22,12 @@ public:
 	std::string FirstField();
 	std::string SecondField();
 	std::string ThirdField();
-
+	void Print_FirstLine();
 	void Print_Date(int);
 
 };
+
+void PrintFormatLine(std::string& format);
 
 void PrintTime(int hour, int min);
 

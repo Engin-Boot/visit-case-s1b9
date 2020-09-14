@@ -39,9 +39,22 @@ void Output_DatePrinter::Print_Date(int date)
 
 }
 
+void Output_DatePrinter::Print_FirstLine()
+{
+	PrintAtleastTwoDigits(_month);
+	std::cout << " ";
+	PrintAtleastTwoDigits(_year);
+	std::cout << std::endl;
+}
+
 std::string Output_DatePrinter::FirstField() { return _date[0]; }
 std::string Output_DatePrinter::SecondField() { return _date[1]; }
 std::string Output_DatePrinter::ThirdField() { return _date[2]; }
+
+void PrintFormatLine(std::string& format)
+{
+	std::cout << format << std::endl;
+}
 
 void PrintTime(int hour, int min)
 {

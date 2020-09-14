@@ -1,6 +1,7 @@
 #pragma once
 #include"data_from_csv.h"
 #include"generateTimestamps.h"
+#include"outputPrinter.h"
 
 class MonthlyTimestamps
 {
@@ -16,5 +17,5 @@ public:
 	std::vector<int> GetHoursOn(int);
 	std::vector<int> GetMinutesOn(int);
 
-
+	void PrintOutput();
 };

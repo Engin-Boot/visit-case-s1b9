@@ -80,19 +80,36 @@ TEST_CASE("print date 2")
 	REQUIRE(oss.str() == "2020 24 04");
 }
 
-TEST_CASE("print time")
+TEST_CASE("print time - print FirstLine")
 {
 	std::ostringstream oss;
 	std::streambuf* p_cout_streambuf = std::cout.rdbuf();
 	std::cout.rdbuf(oss.rdbuf());
 
-	PrintTime(1, 12);
+	std::string format = "yyyy dd mm";
+	Output_DatePrinter tester(4, 2020, format);
+
+	tester.Print_FirstLine();
 	std::cout << std::endl;
 	PrintTime(14, 1);
 
 	std::cout.rdbuf(p_cout_streambuf);
 	REQUIRE(oss);
-	REQUIRE(oss.str() == "01 12\n14 01");
+	REQUIRE(oss.str() == "04 2020\n14 01");
+}
+
+TEST_CASE("print format")
+{
+	std::ostringstream oss;
+	std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf());
+
+	std::string format = "this is format";
+	PrintFormat(format);
+
+	std::cout.rdbuf(p_cout_streambuf);
+	REQUIRE(oss);
+	REQUIRE(oss.str() == "this is format");
 }
 
 
