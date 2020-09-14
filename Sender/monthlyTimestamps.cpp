@@ -22,3 +22,4 @@ std::vector<int> MonthlyTimestamps::GetMinutesOn(int date)
 {
 	return _timestamps[date].GetDailyMinutes();
 }
+

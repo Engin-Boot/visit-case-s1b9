@@ -14,5 +14,6 @@ public:
 	explicit MonthlyTimestamps(std::string& fileName);
 	std::vector<int> GetHoursOn(int);
 	std::vector<int> GetMinutesOn(int);
+	DataFrom_csv* GetDataFrom_csv();
 
 };

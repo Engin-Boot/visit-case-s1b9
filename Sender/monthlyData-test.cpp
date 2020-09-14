@@ -54,4 +54,13 @@ TEST_CASE("Update_no_of_days")
 	REQUIRE(test2.GetNoOfDays() == 28);
 }
 
+TEST_CASE("Get footfall values")
+{
+	std::vector<int> footfall_test= { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 };
+	MonthlyData test1(4, 2020);
+	test1.UpdateFootfallPerDay(footfall_test);
+
+	REQUIRE(test1.GetFootfallPerDay() == footfall_test);
+}
+
 #endif

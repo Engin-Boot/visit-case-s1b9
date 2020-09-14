@@ -1,6 +1,4 @@
 #include "generateTimestamps.h"
-#include<iostream>
-#include<iomanip>
 
 RandomGenerator::RandomGenerator(double min, double max, unsigned long seed) :
         _rand_seed(seed), _generator(seed), _min(min), _max(max), _distribution((min + max) / 2, (max - min) / 4) {}
@@ -20,28 +18,26 @@ int RandomGenerator::operator ()()
 
 bool  RandomGenerator::numberIsInRange(double num) { return ((_min <= num) && (num <= _max)); }
 
-std::vector<int> generateRandomNumbers(int size)
+void DayTimestamps::generateRandomNumbers(int size)
 {
     srand(time(NULL));
     int random_seed_value = (rand() % 10);
     RandomGenerator gen(0.0, MINUTES_PER_DAY, (unsigned long)random_seed_value);
  
-    std::vector<int> numbers;
-
     for (int i = 0; i < size; i++)
-        numbers.push_back(gen());
+        _random_numbers.push_back(gen());
 
-    std::sort(numbers.begin(), numbers.end());
-    return numbers;
+    std::sort(_random_numbers.begin(), _random_numbers.end());
+
 }
 
 DayTimestamps::DayTimestamps(int size)
 {
-    std::vector<int> timestamps = generateRandomNumbers(size);
-    for (unsigned int i = 0; i < timestamps.size(); i++)
+    generateRandomNumbers(size);
+    for (int i = 0; i < size; i++)
     {
-        _time[0].push_back(timestamps[i] / 60);
-        _time[1].push_back(timestamps[i] % 60);
+        _time[0].push_back(_random_numbers[i] / 60);
+        _time[1].push_back(_random_numbers[i] % 60);
     }
 }
 

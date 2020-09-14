@@ -23,13 +23,13 @@ public:
     int operator ()();
 };
 
-std::vector<int> generateRandomNumbers(int size);
-
 class DayTimestamps
 {
 private:
-    std::vector<int> _time[2];
 
+    std::vector<int> _time[2];
+    std::vector<int> _random_numbers;
+    void generateRandomNumbers(int size);
 public:
     explicit DayTimestamps(int);
     std::vector<int> GetDailyHours();

@@ -5,48 +5,52 @@
 
 #include"../catch.hpp"
 #include"generateTimestamps.h"
+#include<iostream>
 
-TEST_CASE("GenerateRandomNumbers-size")
+TEST_CASE("Random number generator")
 {
-	unsigned int size = 10;
-	REQUIRE(generateRandomNumbers(size).size() == size);
-}
+	srand(time(NULL));
+	int random_seed_value = (rand() % 10);
+	RandomGenerator gen(10, 1000, (unsigned long)random_seed_value);
 
-TEST_CASE("GenerateRandomNumbers-range")
-{
-	int size = 5;
-	std::vector<int> numbers = generateRandomNumbers(size);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 31; i++)
 	{
-		REQUIRE(((numbers[i] >= 0) && (numbers[i] <= 1440)) == true);
+		int num = gen();
+		REQUIRE(num >= 10);
+		REQUIRE(num < 1000);
+
 	}
-	//REQUIRE(((numbers[0] >= 0) && (numbers[0] <= 1440))==true);
-	//REQUIRE(((numbers[1] >= 0) && (numbers[1] <= 1440))==true);
-	//REQUIRE(((numbers[2] >= 0) && (numbers[2] <= 1440))==true);
-	//REQUIRE(((numbers[3] >= 0) && (numbers[3] <= 1440))==true);
-	//REQUIRE(((numbers[4] >= 0) && (numbers[4] <= 1440))==true);
 }
 
-TEST_CASE("GenerateRandomNumbers-sorted")
+TEST_CASE("Hours from timestamps")
 {
-	int size = 5;
-	std::vector<int> numbers = generateRandomNumbers(size);
-	REQUIRE((numbers[4]>=numbers[3])==true);
-	REQUIRE((numbers[3] >= numbers[2])==true);
-	REQUIRE((numbers[2] >= numbers[1])==true);
-	REQUIRE((numbers[1] >= numbers[0])==true);
+	DayTimestamps test(20);
+	std::vector<int> hours = test.GetDailyHours();
+	REQUIRE(hours.size() == 20);
+
+	int min = hours[0];
+
+	for (unsigned int i = 0; i < 20; i++)
+	{
+		REQUIRE(hours[i] >= 0);
+		REQUIRE(hours[i] < 24);
+		REQUIRE(hours[i] >= min);
+
+		min = hours[i];
+	}
+
 }
 
-TEST_CASE("Hours and minutes from timestamps")
+TEST_CASE("Minutes from timestamps")
 {
-	std::vector<int> numbers = { 0, 65, 157, 199, 250, 348, 362, 433, 491, 540, 659, 689 };
-	std::vector<int> hours = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-	std::vector<int> minutes = { 0, 5, 37, 19, 10, 48, 2, 13, 11, 0, 59, 29 };
-
-	DayTimestamps test(numbers);
-
-	REQUIRE(test.GetDailyHours() == hours);
-	REQUIRE(test.GetDailyMinutes() == minutes);
+	DayTimestamps test(20);
+	std::vector<int> minutes = test.GetDailyMinutes();
+	REQUIRE(minutes.size() == 20);
+	for (unsigned int i = 0; i < 20; i++)
+	{
+		REQUIRE(minutes[i] >= 0);
+		REQUIRE(minutes[i] < 60);
+	}
 }
 
 #endif
