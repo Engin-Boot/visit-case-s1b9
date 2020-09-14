@@ -23,15 +23,27 @@ void Output_DatePrinter::SplitDate(std::string& date_format)
 	 _date[date_field_count] = field;
 }
 
+void Output_DatePrinter::Print_Date(int date)
+{
+	std::map<std::string, int> field_to_value;
+
+	field_to_value.insert(std::pair<std::string, int>("dd", date));
+	field_to_value.insert(std::pair<std::string, int>("mm", _month));
+	field_to_value.insert(std::pair<std::string, int>("yyyy", _year));
+
+	PrintAtleastTwoDigits(field_to_value.find(_date[0])->second);
+	std::cout << " ";
+	PrintAtleastTwoDigits(field_to_value.find(_date[1])->second);
+	std::cout << " ";
+	PrintAtleastTwoDigits(field_to_value.find(_date[2])->second);
+
+}
+
 std::string Output_DatePrinter::FirstField() { return _date[0]; }
 std::string Output_DatePrinter::SecondField() { return _date[1]; }
 std::string Output_DatePrinter::ThirdField() { return _date[2]; }
 
-void PrintDateString(std::string& date_format, int date, int month, int year)
-{
-
-}
-void PrintTwoDigits(int number)
+void PrintAtleastTwoDigits(int number)
 {
 	std::cout << std::setw(2) << std::setfill('0') << number;
 }

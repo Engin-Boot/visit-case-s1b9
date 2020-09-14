@@ -4,6 +4,8 @@
 #include<iomanip>
 #include<vector>
 #include<string>
+#include<map>
+#include<iterator>
 
 class Output_DatePrinter
 {
@@ -21,11 +23,12 @@ public:
 	std::string SecondField();
 	std::string ThirdField();
 
+	void Print_Date(int);
 
 };
 
-void PrintDateString(std::string& date_format, int date, int month, int year);
-void PrintTwoDigits(int number);
-std::vector<std::string> SplitDate(std::string& date_format);
+
+void PrintAtleastTwoDigits(int number);
+
 
 
