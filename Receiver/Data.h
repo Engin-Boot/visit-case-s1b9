@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-#include<sstream>
 #include<string>
 #include<vector>
 using namespace std;
@@ -24,15 +23,10 @@ public:
 	int getHour();
 	int getMinute();
 
-	void setDate(int);
+	/*void setDate(int);
 	void setMonth(int);
 	void setYear(int);
 	void setHour(int);
-	void setMinute(int);
-
-	
-	/*void getAvgHourlyfootfall(int,int);
-	void getAvgDailyfootfall();
-	void getPeekDailyfootfallMontly();*/
+	void setMinute(int);*/
 };
 
