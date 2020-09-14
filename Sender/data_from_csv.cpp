@@ -34,6 +34,7 @@ std::vector<int> DataFrom_csv::Get_FootfallValues()
 	return footfall_values;
 }
 std::string DataFrom_csv::GetOutputFormat() { return _output_format.Get_Format(); }
+std::string DataFrom_csv::DateFormat() { return _output_format.Get_DateFormat(); }
 int DataFrom_csv::GetMonth() { return _daily_footfalls.GetMonth(); }
 int DataFrom_csv::GetYear() { return _daily_footfalls.GetYear(); }
 std::vector<int> DataFrom_csv::GetFootfallValues() 

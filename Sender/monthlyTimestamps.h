@@ -12,6 +12,7 @@ private:
 	
 public:
 	explicit MonthlyTimestamps(std::string& fileName);
+	
 	std::vector<int> GetHoursOn(int);
 	std::vector<int> GetMinutesOn(int);
 

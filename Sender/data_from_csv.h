@@ -25,6 +25,7 @@ private:
 public:
 	explicit DataFrom_csv(std::string&);
 	std::string GetOutputFormat();
+	std::string DateFormat();
 	int GetMonth();
 	int GetYear();
 	std::vector<int> GetFootfallValues();

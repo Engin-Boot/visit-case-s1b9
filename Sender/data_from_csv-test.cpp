@@ -23,6 +23,7 @@ TEST_CASE("DataFrom_csv")
 	= { 81,21,37,27,23,98,45,37,31,25,58,104,64,78,20,68,60,73,30,28,13,56,51,56,67,36,77,70,45,68,83 };
 
 	REQUIRE((aug_data.GetOutputFormat()).compare("dd mm yyyy hh mn") == 0);
+	REQUIRE((aug_data.DateFormat()).compare("dd mm yyyy") == 0);
 	REQUIRE(aug_data.GetMonth() == 8);
 	REQUIRE(aug_data.GetYear() == 2020);
 	REQUIRE(aug_data.GetFootfallValues() == footfalls);
