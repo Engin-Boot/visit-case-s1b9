@@ -20,7 +20,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
 
     - name: Limit Complexity
-      run: $HOME/.local/bin/lizard --CCN 3 -x"./includes/catch.hpp"
+      run: $HOME/.local/bin/lizard --CCN 3 -x"./catch.hpp"
     
     - name: Static Analysis
       run: cppcheck --enable=all --error-exitcode=1 --suppressions-list=suppressions.txt .
