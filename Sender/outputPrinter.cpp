@@ -64,9 +64,3 @@ void PrintAtleastTwoDigits(int number)
 {
 	std::cout << std::setw(2) << std::setfill('0') << number;
 }
-
-#ifdef TEST_PRINT_OUTPUT
-std::string Output_DatePrinter::FirstField() { return _date[0]; }
-std::string Output_DatePrinter::SecondField() { return _date[1]; }
-std::string Output_DatePrinter::ThirdField() { return _date[2]; }
-#endif

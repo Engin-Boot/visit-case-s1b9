@@ -88,14 +88,6 @@ TEST_CASE("Get footfall values")
 
 #ifdef TEST_FILE_READER
 
-TEST_CASE("TwoArg Constructor")
-{
-	FileReader reader1("random");
-	REQUIRE((reader1.GetFileName()).compare("./Sender/SafeFile.csv") == 0);
-
-	FileReader reader2("./test-data/input.csv");
-	REQUIRE((reader2.GetFileName()).compare("./test-data/input.csv") == 0);
-}
 TEST_CASE("ReturnFile is Good")
 {
 	FileReader reader1("random");
@@ -181,9 +173,6 @@ TEST_CASE("DataFrom_csv")
 	REQUIRE(aug_data.GetFootfallValues() == footfalls);
 }
 
-
-
-
 #endif
 
 #ifdef TEST_GENERATE_TIMESTAMPS
@@ -237,46 +226,6 @@ TEST_CASE("Minutes from timestamps")
 #endif
 
 #ifdef TEST_PRINT_OUTPUT
-
-TEST_CASE("split-string 1")
-{
-	std::string date_format = "yyyy dd mm";
-	Output_DatePrinter test(4, 2020, date_format);
-
-	REQUIRE((test.FirstField()).compare("yyyy") == 0);
-	REQUIRE((test.SecondField()).compare("dd") == 0);
-	REQUIRE((test.ThirdField()).compare("mm") == 0);
-}
-
-TEST_CASE("split-string 2")
-{
-	std::string date_format = "yyyy mm dd";
-	Output_DatePrinter test(4, 2020, date_format);
-
-	REQUIRE((test.FirstField()).compare("yyyy") == 0);
-	REQUIRE((test.SecondField()).compare("mm") == 0);
-	REQUIRE((test.ThirdField()).compare("dd") == 0);
-}
-
-TEST_CASE("split-string 3")
-{
-	std::string date_format = "dd mm yyyy";
-	Output_DatePrinter test(4, 2020, date_format);
-
-	REQUIRE((test.FirstField()).compare("dd") == 0);
-	REQUIRE((test.SecondField()).compare("mm") == 0);
-	REQUIRE((test.ThirdField()).compare("yyyy") == 0);
-}
-
-TEST_CASE("split-string 4")
-{
-	std::string date_format = "mm dd yyyy";
-	Output_DatePrinter test(4, 2020, date_format);
-
-	REQUIRE((test.FirstField()).compare("mm") == 0);
-	REQUIRE((test.SecondField()).compare("dd") == 0);
-	REQUIRE((test.ThirdField()).compare("yyyy") == 0);
-}
 
 TEST_CASE("print date 1")
 {
@@ -359,20 +308,20 @@ TEST_CASE("print format")
 
 #ifdef TEST_MONTHLY_TIMESTAMPS
 
-TEST_CASE("monthly-timestamp")
-{
-	std::string fileName = "./test-data/input.csv";
-	MonthlyTimestamps test(fileName);
-
-	std::vector<int> footfalls
-		= { 81,21,37,27,23,98,45,37,31,25,58,104,64,78,20,68,60,73,30,28,13,56,51,56,67,36,77,70,45,68,83 };
-
-	for (unsigned int i = 0; i < footfalls.size(); i++)
-	{
-		REQUIRE((test.GetHoursOn(i)).size() == (unsigned int)footfalls[i]);
-		REQUIRE((test.GetMinutesOn(i)).size() == (unsigned int)footfalls[i]);
-	}
-}
+//TEST_CASE("monthly-timestamp")
+//{
+//	std::string fileName = "./test-data/input.csv";
+//	MonthlyTimestamps test(fileName);
+//
+//	std::vector<int> footfalls
+//		= { 81,21,37,27,23,98,45,37,31,25,58,104,64,78,20,68,60,73,30,28,13,56,51,56,67,36,77,70,45,68,83 };
+//
+//	for (unsigned int i = 0; i < footfalls.size(); i++)
+//	{
+//		REQUIRE((test.GetHoursOn(i)).size() == (unsigned int)footfalls[i]);
+//		REQUIRE((test.GetMinutesOn(i)).size() == (unsigned int)footfalls[i]);
+//	}
+//}
 
 TEST_CASE("print output")
 {

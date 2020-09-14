@@ -22,12 +22,6 @@ public:
 	void Print_FirstLine();
 	void Print_Date(int);
 
-#ifdef TEST_PRINT_OUTPUT
-	std::string FirstField();
-	std::string SecondField();
-	std::string ThirdField();
-#endif
-
 };
 
 void PrintFormatLine(const std::string& format);

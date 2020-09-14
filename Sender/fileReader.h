@@ -19,9 +19,4 @@ public:
 	explicit FileReader(std::string);
 	std::vector<std::string> GetFileLines();
 
-#ifdef TEST_FILE_READER
-	std::string GetFileName();
-#endif
-
-
 };

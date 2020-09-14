@@ -16,9 +16,4 @@ public:
 	explicit MonthlyTimestamps(std::string& fileName);
 	void PrintOutput();
 
-#ifdef TEST_MONTHLY_TIMESTAMPS
-	std::vector<int> GetHoursOn(int);
-	std::vector<int> GetMinutesOn(int);
-#endif
-
 };

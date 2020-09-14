@@ -30,7 +30,3 @@ bool FileReader::ReadFile()
 }
 
 std::vector<std::string> FileReader::GetFileLines() { return _fileLines; }
-
-#ifdef TEST_FILE_READER
-std::string FileReader::GetFileName() { return _fileName; }
-#endif

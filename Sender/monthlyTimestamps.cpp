@@ -41,8 +41,3 @@ void MonthlyTimestamps::PrintOutput()
 		}
 	}
 }
-
-#ifdef TEST_MONTHLY_TIMESTAMPS
-std::vector<int> MonthlyTimestamps::GetHoursOn(int date) { return _timestamps[date].GetDailyHours(); }
-std::vector<int> MonthlyTimestamps::GetMinutesOn(int date) { return _timestamps[date].GetDailyMinutes(); }
-#endif
