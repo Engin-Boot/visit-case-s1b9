@@ -18,10 +18,11 @@ public:
 	Data();
 	Data(int, int, int, int, int);
 	int getDate();
-	int getMonth();
-	int getYear();
 	int getHour();
-	int getMinute();
+	
+	/*int getMinute();
+	int getMonth();
+	int getYear();*/
 
 	/*void setDate(int);
 	void setMonth(int);

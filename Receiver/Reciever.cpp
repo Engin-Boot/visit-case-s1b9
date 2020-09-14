@@ -10,21 +10,23 @@ Data::Data():date(01),month(01),year(2000),hour(00),minute(00) {}
 
 Data::Data(int dt, int mth, int yr , int hr, int min): date(dt), month(mth), year(yr), hour(hr), minute(min){}
 
+int Data::getHour()
+{
+	return this->hour;
+}
+
 int Data::getDate()
 {
 	return this->date;
 }
-int Data::getMonth()
+
+/*int Data::getMonth()
 {
 	return this->month;
 }
 int Data::getYear()
 {
 	return this->year;
-}
-int Data::getHour()
-{
-	return this->hour;
 }
 int Data::getMinute()
 {
@@ -39,6 +41,7 @@ int Receiver::getHours()
 {
 	return this->hours;
 }
+*/
 
 Receiver::Receiver():hours(24),days(31) 
 {
@@ -48,19 +51,6 @@ Receiver::Receiver():hours(24),days(31)
 		vector<int> temp_hours(days, 0);
 		this->visitCount.push_back(temp_hours);
 	}
-}
-
-int Receiver::checkMonth(int month)
-{
-	if (month < 1 || month>12)
-	{
-		return 0;
-	}
-	/*if (leapYear(BufferFootfall[0].year))
-	{
-		return DaysInTheMonthForLeapYear[month];
-	}*/
-	return DaysInTheMonth[month-1];
 }
 
 Receiver::Receiver(int month)	
@@ -85,6 +75,21 @@ Receiver::Receiver(int month)
 	}
 }
 
+
+int Receiver::checkMonth(int month)
+{
+	if (month < 1 || month>12)
+	{
+		return 0;
+	}
+	/*if (leapYear(BufferFootfall[0].year))
+	{
+		return DaysInTheMonthForLeapYear[month];
+	}*/
+	return DaysInTheMonth[month - 1];
+}
+
+
 void Receiver::clearBuffer()
 {
 	if (!BufferFootfall.empty())
@@ -108,14 +113,6 @@ void Receiver::storeCountInVector()
 		visitCount[hours][date - 1] = visitCount[hours][date - 1] + 1; 
 	}
 	
-}
-
-void Receiver::storeAvgForPreviousMonth()
-{
-	getAvgDailyfootfall();
-	getAvgHourlyfootfall();
-	getPeekDailyfootfallMontly();
-
 }
 
 void split(vector<string>& result, string s1, char sep) {
@@ -267,8 +264,6 @@ int main()
 {
 	
 	string str;
-	
-	cout << "Enter the Month and Year";
 	getline(cin, str);
 	vector<int> result;
 	stringstream sso(str);

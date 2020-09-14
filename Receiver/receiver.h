@@ -17,16 +17,16 @@ public:
 	Receiver();
 	Receiver(int);
 
-	int getDays();
+	/*int getDays();
 	int getHours();
-	/*
+	
 	void setDays(int);
 	void setHours(int);*/
 
 
 	void getSenderData();
 	void storeInBuffer(std::string&, std::string&);
-	//void displayBuffer();
+	
 	void clearBuffer();
 	void storeCountInVector();
 
