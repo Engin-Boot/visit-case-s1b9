@@ -3,7 +3,7 @@
 #ifdef TEST_ALL
 
 #define CATCH_CONFIG_MAIN
-#include "../includes/catch.hpp"
+#include "../catch.hpp"
 
 #include "monthlyData.h"
 #include "fileReader.h"
