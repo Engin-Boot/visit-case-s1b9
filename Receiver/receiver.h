@@ -4,13 +4,34 @@
 class Receiver
 {
 private:
-	vector<Data> getAverage;
-	float avgfootfallperHour=0;
-	float avgfootfallperDay=0;
+	int hours;
+	int days;
+	vector<Data> BufferFootfall;
+	vector<vector<int>> visitCount;
+	vector<float> hourlyAvgFootfall;
+	vector<float> dailyAvgFootfall;
 
 public:
-	/*void getAvgHourlyfootfall();
+	Receiver();
+	Receiver(int);
+
+	int getDays();
+	int getHours();
+
+	void setDays(int);
+	void setHours(int);
+
+
+	void getSenderData();
+	void storeInBuffer(std::string, std::string);
+	//void displayBuffer();
+	void storeCountInVector();
+	int checkMonth(int);
+
+	void getAvgHourlyfootfall(int,int);
 	void getAvgDailyfootfall();
-	void getPeekDailyfootfallMontly();*/
+	int getPeekDailyfootfallMontly();
+
+	void StoreInCSV();
 
 };

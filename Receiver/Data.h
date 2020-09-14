@@ -1,14 +1,13 @@
 #pragma once
-#include<string>
-#include<vector>
 #include<iostream>
 #include<sstream>
+#include<string>
+#include<vector>
 using namespace std;
 
 class Data
 {
 private:
-	std::vector<Data> storeBufferFootfall;
 	int date=0;
 	int month=0;
 	int year=0;
@@ -16,12 +15,24 @@ private:
 	int minute=0;
 	
 public:
+	
 	Data();
 	Data(int, int, int, int, int);
+	int getDate();
+	int getMonth();
+	int getYear();
+	int getHour();
+	int getMinute();
 
-	void getSenderData();
-	void storeInBuffer(std::string, std::string);
-	void displayBuffer();
-	void checkDataformat_AddtoBuffer(std::string, std::string,std::vector<int>,int,int,int,int,int);
+	void setDate(int);
+	void setMonth(int);
+	void setYear(int);
+	void setHour(int);
+	void setMinute(int);
+
+	
+	/*void getAvgHourlyfootfall(int,int);
+	void getAvgDailyfootfall();
+	void getPeekDailyfootfallMontly();*/
 };
 
