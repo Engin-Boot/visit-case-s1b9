@@ -31,7 +31,7 @@ private:
     std::vector<int> _time[2];
 
 public:
-    explicit DayTimestamps(std::vector<int>);
+    explicit DayTimestamps(int);
     std::vector<int> GetDailyHours();
     std::vector<int> GetDailyMinutes();
 };
