@@ -7,11 +7,6 @@ bool IsLeapYear(int year)
 
 MonthlyData::MonthlyData() :_month(1), _year(2000), _no_of_days(31) {}
 
-MonthlyData::MonthlyData(int month, int year): _month(1), _year(2000), _no_of_days(31)
-{
-	UpdateValues(month, year);
-}
-
 void MonthlyData::UpdateValues(int month, int year)
 {
 	if (MonthIsValid(month))

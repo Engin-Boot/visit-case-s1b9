@@ -1,3 +1,7 @@
+#include"test-all.h"
+
+#ifndef TEST_ALL
+
 #include"monthlyTimestamps.h"
 
 int main()
@@ -8,3 +12,5 @@ int main()
 
 	return 0;
 }
+
+#endif

@@ -14,17 +14,10 @@ void MonthlyTimestamps::UpdateDayTimestamps()
 		_timestamps.push_back(value);
 	}
 }
-std::vector<int> MonthlyTimestamps::GetHoursOn(int date)
-{
-	return _timestamps[date].GetDailyHours();
-}
-std::vector<int> MonthlyTimestamps::GetMinutesOn(int date)
-{
-	return _timestamps[date].GetDailyMinutes();
-}
+
 void MonthlyTimestamps::PrintOutput()
 {
-	std::string output_format = _data.GetOutputFormat();
+	const std::string output_format = _data.GetOutputFormat();
 	std::string date_format = _data.DateFormat();
 	int month = _data.GetMonth();
 	int year = _data.GetYear();
@@ -49,3 +42,7 @@ void MonthlyTimestamps::PrintOutput()
 	}
 }
 
+#ifdef TEST_MONTHLY_TIMESTAMPS
+std::vector<int> MonthlyTimestamps::GetHoursOn(int date) { return _timestamps[date].GetDailyHours(); }
+std::vector<int> MonthlyTimestamps::GetMinutesOn(int date) { return _timestamps[date].GetDailyMinutes(); }
+#endif

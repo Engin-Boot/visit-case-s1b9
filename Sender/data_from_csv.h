@@ -1,4 +1,5 @@
 #pragma once
+#include"test-all.h"
 #include"fileReader.h"
 #include"monthlyData.h"
 #include"outputFormat.h"

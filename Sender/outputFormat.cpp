@@ -9,12 +9,6 @@ std::vector<std::string> TimeFormat
 OutputFormat::OutputFormat() :
 	_date_format("dd mm yyyy"), _time_format("hh mn"), _total_format("dd mm yyyy hh mn") {}
 
-OutputFormat::OutputFormat(const char* formatFromFile) :
-	_date_format("dd mm yyyy"), _time_format("hh mn"), _total_format("dd mm yyyy hh mn")
-{
-	UpdateFormat(formatFromFile);
-}
-
 void OutputFormat::UpdateFormat(const char* formatFromFile)
 {
 	if (FormatIsValid(formatFromFile))
@@ -54,4 +48,3 @@ bool OutputFormat::TimeFormatIsValid(std::string time_copy)
 }
 std::string OutputFormat::Get_Format() { return _total_format; }
 std::string OutputFormat::Get_DateFormat() { return _date_format; }
-std::string OutputFormat::Get_TimeFormat() { return _time_format; }

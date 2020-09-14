@@ -1,3 +1,5 @@
+#pragma once
+#include"test-all.h"
 #include<fstream>
 #include<vector>
 #include<string>
@@ -16,4 +18,10 @@ public:
 	bool ReadIsGood;
 	explicit FileReader(std::string);
 	std::vector<std::string> GetFileLines();
+
+#ifdef TEST_FILE_READER
+	std::string GetFileName();
+#endif
+
+
 };

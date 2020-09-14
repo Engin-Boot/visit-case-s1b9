@@ -1,5 +1,5 @@
 #pragma once
-
+#include"test-all.h"
 #include<iostream>
 #include<iomanip>
 #include<vector>
@@ -15,19 +15,22 @@ private:
 
 	std::string _date[3];
 
-	void SplitDate(std::string& date_format);
+	void SplitDate(const std::string& date_format);
 
 public:
 	Output_DatePrinter(int month, int year, std::string& date_format);
-	std::string FirstField();
-	std::string SecondField();
-	std::string ThirdField();
 	void Print_FirstLine();
 	void Print_Date(int);
 
+#ifdef TEST_PRINT_OUTPUT
+	std::string FirstField();
+	std::string SecondField();
+	std::string ThirdField();
+#endif
+
 };
 
-void PrintFormatLine(std::string& format);
+void PrintFormatLine(const std::string& format);
 
 void PrintTime(int hour, int min);
 

@@ -1,4 +1,5 @@
 #pragma once
+#include"test-all.h"
 #include<vector>
 #include<string>
 #include<random>

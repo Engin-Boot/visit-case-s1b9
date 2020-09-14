@@ -1,4 +1,5 @@
 #pragma once
+#include"test-all.h"
 #include<vector>
 
 extern std::vector<int> DaysInTheMonth;
@@ -20,11 +21,11 @@ private:
 public:
 
 	MonthlyData();
-	MonthlyData(int month, int year);
 	void UpdateValues(int month, int year);
 	void UpdateFootfallPerDay(std::vector<int> counts);
 	int GetMonth();
 	int GetYear();
 	int GetNoOfDays();
 	std::vector<int> GetFootfallPerDay();
+
 };

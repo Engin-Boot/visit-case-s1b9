@@ -1,4 +1,5 @@
 #pragma once
+#include"test-all.h"
 #include<string>
 #include<vector>
 #include<algorithm>
@@ -26,9 +27,8 @@ private:
 
 public:
 	OutputFormat();
-	explicit OutputFormat(const char*);
 	void UpdateFormat(const char *);
 	std::string Get_Format();
 	std::string Get_DateFormat();
-	std::string Get_TimeFormat();
+
 };
