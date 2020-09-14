@@ -78,9 +78,22 @@ TEST_CASE("print date 2")
 	std::cout.rdbuf(p_cout_streambuf);
 	REQUIRE(oss);
 	REQUIRE(oss.str() == "2020 24 04");
-
 }
 
+TEST_CASE("print time")
+{
+	std::ostringstream oss;
+	std::streambuf* p_cout_streambuf = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf());
+
+	PrintTime(1, 12);
+	std::cout << std::endl;
+	PrintTime(14, 1);
+
+	std::cout.rdbuf(p_cout_streambuf);
+	REQUIRE(oss);
+	REQUIRE(oss.str() == "01 12\n14 01");
+}
 
 
 #endif

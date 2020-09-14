@@ -27,6 +27,7 @@ public:
 
 };
 
+void PrintTime(int hour, int min);
 
 void PrintAtleastTwoDigits(int number);
 
