@@ -20,29 +20,6 @@ int Data::getDate()
 	return this->date;
 }
 
-/*int Data::getMonth()
-{
-	return this->month;
-}
-int Data::getYear()
-{
-	return this->year;
-}
-int Data::getMinute()
-{
-	return this->minute;
-}
-
-int Receiver::getDays()
-{
-	return this->days;
-}
-int Receiver::getHours()
-{
-	return this->hours;
-}
-*/
-
 Receiver::Receiver():hours(24),days(31) 
 {
 	for (int i = 0; i < hours+1; i++)
@@ -69,10 +46,6 @@ int checkMonth(int month)
 	{
 		return 0;
 	}
-	/*if (leapYear(BufferFootfall[0].year))
-	{
-		return DaysInTheMonthForLeapYear[month];
-	}*/
 	return DaysInTheMonth[month - 1];
 }
 
