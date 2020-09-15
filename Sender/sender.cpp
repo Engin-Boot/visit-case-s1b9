@@ -1,10 +1,14 @@
 #include<iostream>
+#include<fstream>
+#include <string>
 
+
+using namespace std;
 int main()
 {
-  int arr[5] = {1,2,3,4,5};
-  for(int i =0; i<5 ; i++)
-  {
-    std::cout<< arr[i] << std::endl;
-  }
+	std::ifstream f("output.txt");
+	if (f.is_open())
+		std::cout << f.rdbuf();
+
 }
+

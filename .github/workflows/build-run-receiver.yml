@@ -14,11 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
+    - name: build sender
+      run: g++ -Wall -Wextra -Werror --coverage -o SenderOutput Sender/*.cpp
+
     - name: build receiver
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverOutput Receiver/*.cpp
       
     - name: run receiver
-      run: ./ReceiverOutput
+      run: ./SenderOutput | ./ReceiverOutput
       
     - name: receiver coverage report
       run: gcov -r --object-directory . Receiver/*.cpp  
