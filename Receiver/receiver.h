@@ -15,7 +15,7 @@ private:
 
 public:
 	Receiver();
-	Receiver(int);
+	Receiver(int,int);
 
 	/*int getDays();
 	int getHours();
@@ -30,8 +30,7 @@ public:
 	void clearBuffer();
 	void storeCountInVector();
 
-	int checkMonth(int);
-
+	
 	
 	void storeAvgForPreviousMonth();
 
