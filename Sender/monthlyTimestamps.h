@@ -14,6 +14,6 @@ private:
 	
 public:
 	explicit MonthlyTimestamps(std::string& fileName);
-	void PrintOutput();
+	void PrintOutput();  // cppcheck-suppress unusedFunction
 
 };

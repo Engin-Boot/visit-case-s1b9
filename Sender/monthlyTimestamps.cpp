@@ -15,7 +15,7 @@ void MonthlyTimestamps::UpdateDayTimestamps()
 	}
 }
 
-void MonthlyTimestamps::PrintOutput()
+void MonthlyTimestamps::PrintOutput() // cppcheck-suppress unusedFunction
 {
 	const std::string output_format = _data.GetOutputFormat();
 	std::string date_format = _data.DateFormat();
