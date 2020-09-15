@@ -88,23 +88,36 @@ TEST_CASE("Get footfall values")
 
 #ifdef TEST_FILE_READER
 
-TEST_CASE("ReturnFile is Good")
-{
-	FileReader reader1("random");
-	REQUIRE(reader1.ReadIsGood == true);
-
-	FileReader reader2("./test-data/input.csv");
-	REQUIRE(reader2.ReadIsGood == true);
-}
-
-TEST_CASE("ReadFile")
+TEST_CASE("ReadFile - default - with safe file")
 {
 	FileReader reader1("random");
 	std::vector<std::string> lines1 = reader1.GetFileLines();
+	
+	REQUIRE(reader1.ReadIsGood == true);
+
 	REQUIRE(lines1[0].compare("This,is,a,safe,file") == 0);
 	REQUIRE(lines1[1].compare("It,has,two,lines") == 0);
 	REQUIRE(lines1.size() == 2);
 
+}
+
+//TEST_CASE("ReadFile - default - without safe file")
+//{
+//	FileReader reader1("random");
+//	std::vector<std::string> lines1 = reader1.GetFileLines();
+//
+//	REQUIRE(reader1.ReadIsGood == false);
+//
+//	REQUIRE(lines1.size() == 33);
+//	REQUIRE(lines1[0].compare("Safe,file,not,present") == 0);
+//	REQUIRE(lines1[1].compare("default,values,loaded") == 0);
+//	REQUIRE(lines1[2].compare("1,1") == 0);
+//	REQUIRE(lines1[32].compare("31,1") == 0);
+//}
+
+
+TEST_CASE("ReadFile - actual input")
+{
 	FileReader reader2("./test-data/input.csv");
 	std::vector<std::string> lines2 = reader2.GetFileLines();
 
@@ -115,6 +128,8 @@ TEST_CASE("ReadFile")
 	REQUIRE(lines2[33].compare("31,83") == 0);
 	REQUIRE(lines2.size() == 34);
 }
+
+
 
 #endif
 
@@ -159,7 +174,7 @@ TEST_CASE("Split String function")
 	REQUIRE(split_data[2] == 38);
 }
 
-TEST_CASE("DataFrom_csv")
+TEST_CASE("DataFrom_csv - correct input")
 {
 	std::string fileName = "./test-data/input.csv";
 	DataFrom_csv aug_data(fileName);
@@ -170,6 +185,20 @@ TEST_CASE("DataFrom_csv")
 	REQUIRE((aug_data.DateFormat()).compare("dd mm yyyy") == 0);
 	REQUIRE(aug_data.GetMonth() == 8);
 	REQUIRE(aug_data.GetYear() == 2020);
+	REQUIRE(aug_data.GetFootfallValues() == footfalls);
+}
+
+TEST_CASE("DataFrom_csv - default")
+{
+	std::string fileName = "random";
+	DataFrom_csv aug_data(fileName);
+	std::vector<int> footfalls(31);
+	std::fill(footfalls.begin(), footfalls.end(), 1);
+	
+	REQUIRE((aug_data.GetOutputFormat()).compare("dd mm yyyy hh mn") == 0);
+	REQUIRE((aug_data.DateFormat()).compare("dd mm yyyy") == 0);
+	REQUIRE(aug_data.GetMonth() == 1);
+	REQUIRE(aug_data.GetYear() == 2000);
 	REQUIRE(aug_data.GetFootfallValues() == footfalls);
 }
 

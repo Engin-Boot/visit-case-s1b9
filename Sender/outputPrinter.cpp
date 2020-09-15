@@ -1,6 +1,6 @@
 #include"outputPrinter.h"
 
-Output_DatePrinter::Output_DatePrinter(int month, int year, std::string& date_format): _month(month), _year(year), _date{"dd","mm","yyyy"}
+Output_DatePrinter::Output_DatePrinter(int month, int year, const std::string& date_format): _month(month), _year(year), _date{"dd","mm","yyyy"}
 {
 	const std::string format = date_format;
 	SplitDate(format);

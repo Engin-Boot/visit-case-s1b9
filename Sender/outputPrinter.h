@@ -18,7 +18,7 @@ private:
 	void SplitDate(const std::string& date_format);
 
 public:
-	Output_DatePrinter(int month, int year, std::string& date_format);
+	Output_DatePrinter(int month, int year, const std::string& date_format);
 	void Print_FirstLine();
 	void Print_Date(int);
 

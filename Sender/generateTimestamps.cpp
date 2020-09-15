@@ -3,7 +3,7 @@
 RandomGenerator::RandomGenerator(double min, double max, unsigned long seed) :
         _rand_seed(seed), _generator(seed), _min(min), _max(max), _distribution((min + max) / 2, (max - min) / 4) {}
 
-int RandomGenerator::operator ()()
+int RandomGenerator::operator() ()
 {
     int return_number = 0;
     while (!return_number) 
