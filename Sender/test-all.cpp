@@ -88,32 +88,31 @@ TEST_CASE("Get footfall values")
 
 #ifdef TEST_FILE_READER
 
-TEST_CASE("ReadFile - default - with safe file")
-{
-	FileReader reader1("random");
-	std::vector<std::string> lines1 = reader1.GetFileLines();
-	
-	REQUIRE(reader1.ReadIsGood == true);
-
-	REQUIRE(lines1[0].compare("This,is,a,safe,file") == 0);
-	REQUIRE(lines1[1].compare("It,has,two,lines") == 0);
-	REQUIRE(lines1.size() == 2);
-
-}
-
-//TEST_CASE("ReadFile - default - without safe file")
+//TEST_CASE("ReadFile - default - with safe file")
 //{
 //	FileReader reader1("random");
 //	std::vector<std::string> lines1 = reader1.GetFileLines();
+//	
+//	REQUIRE(reader1.ReadIsGood == true);
 //
-//	REQUIRE(reader1.ReadIsGood == false);
-//
-//	REQUIRE(lines1.size() == 33);
-//	REQUIRE(lines1[0].compare("Safe,file,not,present") == 0);
-//	REQUIRE(lines1[1].compare("default,values,loaded") == 0);
-//	REQUIRE(lines1[2].compare("1,1") == 0);
-//	REQUIRE(lines1[32].compare("31,1") == 0);
+//	REQUIRE(lines1[0].compare("This,is,a,safe,file") == 0);
+//	REQUIRE(lines1[1].compare("It,has,two,lines") == 0);
+//	REQUIRE(lines1.size() == 2);
 //}
+
+TEST_CASE("ReadFile - default - without safe file")
+{
+	FileReader reader1("random");
+	std::vector<std::string> lines1 = reader1.GetFileLines();
+
+	REQUIRE(reader1.ReadIsGood == false);
+
+	REQUIRE(lines1.size() == 33);
+	REQUIRE(lines1[0].compare("Safe,file,not,present") == 0);
+	REQUIRE(lines1[1].compare("default,values,loaded") == 0);
+	REQUIRE(lines1[2].compare("1,1") == 0);
+	REQUIRE(lines1[32].compare("31,1") == 0);
+}
 
 
 TEST_CASE("ReadFile - actual input")

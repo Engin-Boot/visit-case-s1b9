@@ -1,5 +1,5 @@
 #pragma once
-//#define TEST_ALL
+#define TEST_ALL
 
 #ifdef TEST_ALL
 
