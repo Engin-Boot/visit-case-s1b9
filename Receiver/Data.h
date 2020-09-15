@@ -2,7 +2,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
-using namespace std;
+
 
 class Data
 {
@@ -19,15 +19,5 @@ public:
 	Data(int, int, int, int, int);
 	int getDate();
 	int getHour();
-	
-	/*int getMinute();
-	int getMonth();
-	int getYear();*/
-
-	/*void setDate(int);
-	void setMonth(int);
-	void setYear(int);
-	void setHour(int);
-	void setMinute(int);*/
 };
 
