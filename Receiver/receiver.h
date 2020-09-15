@@ -8,21 +8,14 @@ private:
 	int days;
 	int peakValue=0;
 	int peakdate=0;
-	vector<Data> BufferFootfall;
-	vector<vector<int>> visitCount;
-	vector<float> hourlyAvgFootfall;
-	vector<float> dailyAvgFootfall;
+	std::vector<Data> BufferFootfall;
+	std::vector<std::vector<int>> visitCount;
+	std::vector<float> hourlyAvgFootfall;
+	std::vector<float> dailyAvgFootfall;
 
 public:
 	Receiver();
 	Receiver(int,int);
-
-	/*int getDays();
-	int getHours();
-	
-	void setDays(int);
-	void setHours(int);*/
-
 
 	void getSenderData();
 	void storeInBuffer(std::string&, std::string&);
@@ -42,3 +35,7 @@ public:
 	void StoreInCSV();
 
 };
+
+std::vector<int> getMonthandYear();
+int checkMonth(int);
+void split(std::vector<std::string>&, std::string, char);
