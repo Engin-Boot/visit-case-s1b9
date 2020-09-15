@@ -44,6 +44,7 @@ void DataFrom_csv::UpdateFootfallValues()
 	
 	if (!(_daily_footfalls.GetNoOfDays() == (int)footfall_values.size()))
 	{
+		std::cerr << "Invalid Footfall values. Using defaults" << std::endl;
 		_daily_footfalls.UpdateFootfallPerDay(Safety_values(1));
 	}
 	else	

@@ -6,7 +6,7 @@ RandomGenerator::RandomGenerator(double min, double max, unsigned long seed) :
     _min(min), 
     _max(max), 
     _distribution((min + max) / 2, (max - min) / 4) {} 
-//(max-min)/4 - this term can be adjusted for std dev.Iincrease denominator for lesser deviation.
+//(max-min)/4 - this term can be adjusted for std dev. Increase denominator for lesser deviation.
 
 int RandomGenerator::operator() ()
 {
