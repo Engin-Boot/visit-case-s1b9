@@ -2,13 +2,29 @@
 #include <map>
 #include<sstream>
 #include<fstream>
-
+using namespace std;
 
 std::vector<int> DaysInTheMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 
-Data::Data():date(01),month(01),year(2000),hour(00),minute(00) {}
 
-Data::Data(int dt, int mth, int yr , int hr, int min): date(dt), month(mth), year(yr), hour(hr), minute(min){}
+Data::Data()
+{
+	this->date = 01;
+	this->month = 01;
+	this->year = 2000;
+	this->hour = 0;
+	this->minute = 0;
+}
+
+Data::Data(int dt, int mth, int yr , int hr, int min)
+{
+	this->date = dt;
+	this->month = mth;
+	this->year = yr;
+	this->hour = hr;
+	this->minute = min;
+}
+
 
 int Data::getHour()
 {
@@ -20,9 +36,11 @@ int Data::getDate()
 	return this->date;
 }
 
-Receiver::Receiver():hours(24),days(31) 
+Receiver::Receiver()
 {
-	for (int i = 0; i < hours+1; i++)
+	this->hours = 24;
+	this->days = 31;
+	for (int hour = 0; hour < hours+1; hour++)
 	{
 
 		vector<int> temp_hours(days, 0);
@@ -30,15 +48,16 @@ Receiver::Receiver():hours(24),days(31)
 	}
 }
 
-Receiver::Receiver(int hour,int noofDays):hours(hour),days(noofDays)
+Receiver::Receiver(int hr,int noofDays)
 {
-	for (int i = 0; i < hours+1; i++)
+	this->hours = hr;
+	this->days = noofDays;
+	for (int hour = 0; hour < hours+1; hour++)
 	{
 		vector<int> temp_hours(days,0);
 		this->visitCount.push_back(temp_hours);
 	}
 }
-
 
 int checkMonth(int month)
 {
@@ -63,8 +82,6 @@ void Receiver::clearBuffer()
 void Receiver::storeCountInVector()
 {
 	int hours = 24;
-	
-
 	for (unsigned int i = 1; i < BufferFootfall.size(); i++)
 	{
 		int hour = BufferFootfall[i-1].getHour();
@@ -72,7 +89,6 @@ void Receiver::storeCountInVector()
 		visitCount[hour][date -1] = visitCount[hour][date - 1] + 1;
 		visitCount[hours][date - 1] = visitCount[hours][date - 1] + 1; 
 	}
-	
 }
 
 void split(vector<string>& result, string s1, char sep) {
@@ -219,10 +235,8 @@ void Receiver::StoreInCSV()
 	MyFile.close();
 }
 
-
-int main()
+vector<int> getMonthandYear()
 {
-	
 	string str;
 	getline(cin, str);
 	vector<int> result;
@@ -232,6 +246,13 @@ int main()
 	{
 		result.push_back(month_year);
 	}
+	return result;
+}
+
+int main()
+{
+	
+	vector<int> result = getMonthandYear();
 
 	int month = checkMonth(result[0]);
 	
@@ -243,7 +264,6 @@ int main()
 	obj1.getAvgHourlyfootfall(24, 31);
 	obj1.getAvgDailyfootfall();
 	obj1.getPeekDailyfootfallMontly();
-	//cout << getPeek<<endl;
 	obj1.StoreInCSV();
 
 	return 0;
