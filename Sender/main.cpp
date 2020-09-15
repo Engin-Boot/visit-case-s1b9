@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::string fileName = "random";
+	std::string fileName = "./test-data/input.csv";
 	MonthlyTimestamps aug(fileName);
 	aug.PrintOutput();
 
