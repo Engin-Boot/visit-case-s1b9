@@ -1,9 +1,9 @@
 #pragma once
+#define RECEIVER_TEST
 #include<iostream>
 #include<string>
 #include<vector>
-
-
+using namespace std; 
 class Data
 {
 private:
@@ -19,5 +19,9 @@ public:
 	Data(int, int, int, int, int);
 	int getDate();
 	int getHour();
+	int getMinute();
+	int getMonth();
+	int getYear();
+
 };
 
