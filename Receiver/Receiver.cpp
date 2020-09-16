@@ -2,10 +2,11 @@
 #include <map>
 #include<sstream>
 #include<fstream>
+#include<iomanip>
+
 using namespace std;
 
 std::vector<int> DaysInTheMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
-
 
 Data::Data()
 {
@@ -36,6 +37,38 @@ int Data::getDate()
 	return this->date;
 }
 
+int Data::getMonth()
+{
+	return this->month;
+}
+int Data::getYear()
+{
+	return this->year;
+}
+int Data::getMinute()
+{
+	return this->minute;
+}
+
+int Receiver::getDays()
+{
+	return this->days;
+}
+int Receiver::getHours()
+{
+	return this->hours;
+}
+
+int Receiver::getPeekValue()
+{
+	return this->peakValue;
+}
+
+int Receiver::getPeakDateValue()
+{
+	return this->peakdate;
+}
+
 Receiver::Receiver()
 {
 	this->hours = 24;
@@ -59,12 +92,43 @@ Receiver::Receiver(int hr,int noofDays)
 	}
 }
 
+vector<Data> Receiver::getBuffer()
+{
+	return this->BufferFootfall;
+}
+
+std::vector<std::vector<int>> Receiver::getVisitCount()
+{
+	return this->visitCount;
+}
+
+void Receiver::setVisitCount(int hour, int date,int value)
+{
+	visitCount[hour][date] = value;
+}
+
+std::vector<float> Receiver::gethourAvg()
+{
+	return this->hourlyAvgFootfall;
+}
+
+std::vector<float> Receiver::getDailyAvg()
+{
+	return dailyAvgFootfall;
+}
+
+
+
 int checkMonth(int month)
 {
 	if (month < 1 || month>12)
 	{
 		return 0;
 	}
+	/*if (leapYear(BufferFootfall[0].year))
+	{
+		return DaysInTheMonthForLeapYear[month];
+	}*/
 	return DaysInTheMonth[month - 1];
 }
 
@@ -82,13 +146,16 @@ void Receiver::clearBuffer()
 void Receiver::storeCountInVector()
 {
 	int hours = 24;
-	for (unsigned int i = 1; i < BufferFootfall.size(); i++)
+	
+
+	for (unsigned int i = 1; i <= BufferFootfall.size(); i++)
 	{
 		int hour = BufferFootfall[i-1].getHour();
 		int date = BufferFootfall[i-1].getDate();
 		visitCount[hour][date -1] = visitCount[hour][date - 1] + 1;
 		visitCount[hours][date - 1] = visitCount[hours][date - 1] + 1; 
 	}
+	
 }
 
 void split(vector<string>& result, string s1, char sep) {
@@ -109,7 +176,6 @@ void split(vector<string>& result, string s1, char sep) {
 
 void Receiver::getSenderData()
 {
-	cout << "Enter the format: ";
 	string senderString,senderFormat;
 	getline(cin, senderFormat);
 	cout <<"Footfall Data format used by Sender: "<< senderFormat<<endl;
@@ -141,27 +207,13 @@ void Receiver::storeInBuffer(string& senderFormat,string& senderString)
 	Data addToBuffer(recievedData["dd"], recievedData["mm"], recievedData["yyyy"], recievedData["hh"], recievedData["mn"]);
 	BufferFootfall.push_back(addToBuffer);
 
-	if (BufferFootfall.size() >=50)
+	if (BufferFootfall.size() >=5)
 	{
 		storeCountInVector();
 		BufferFootfall.clear();
 	}
 }
 
-void Receiver::getAvgHourlyfootfall()
-{
-	for (int hour = 0; hour < 24; hour++)
-	{
-		float sum = 0;
-		int noofDays = visitCount[0].size();
-		for (int day = 0; day < noofDays; day++)
-		{
-			sum = sum + visitCount[hour][day];
-		}
-		hourlyAvgFootfall.push_back(sum/noofDays);
-		
-	}
-}
 
 void Receiver::getAvgHourlyfootfall(int noofHours,int noofDays)
 {
@@ -173,12 +225,14 @@ void Receiver::getAvgHourlyfootfall(int noofHours,int noofDays)
 			sum = sum + visitCount[hour][day];
 		}
 		hourlyAvgFootfall.push_back(sum/noofDays);
-		cout <<"Avg. Count for Hour: "<<hour<<" is: "<< hourlyAvgFootfall[hour] <<endl;
+		cout <<"Avg. Count for Hour: "<<setw(2)<<setfill('0')<<hour<<" is: "<< hourlyAvgFootfall[hour] <<endl;
 	}
+	
 }
 
 void Receiver::getAvgDailyfootfall()
 {
+	cout << "		" << endl;
 	for (unsigned int day= 0; day < 7; day++)
 	{
 		float sum,count;
@@ -189,7 +243,7 @@ void Receiver::getAvgDailyfootfall()
 			count++;
 		}
 		dailyAvgFootfall.push_back(sum / count);
-		cout << "Avg. Count for Day " << day << " is: " << dailyAvgFootfall[day] << endl;
+		cout << "Avg. Count for Day : " << setw(2) << setfill('0')<< day << " is: " << dailyAvgFootfall[day] << endl;
 	}
 	
 }
@@ -208,37 +262,38 @@ int Receiver::getPeekDailyfootfallMontly()
 	}
 	peakValue = max;
 	peakdate = date;
-	cout << "Date on which we will get maximum count: " << date << " maximum value " << max << endl;
+	cout << "		" << endl;
+	cout << "Date on which we will get maximum count: " << setw(2) << setfill('0') << date << " maximum value " << max << endl;
 	return max;
 }
 
 void Receiver::StoreInCSV()
 {
 	fstream MyFile;
-	MyFile.open("HourlyAverage.csv", ios::out | ios::app);
-	MyFile << "Hour" << ","<< "Average"<<"\n";
+	MyFile.open("Receiver.csv", ios::out | ios::app);
+
+	MyFile <<"Hour"<<","<<"Average"<<"\n";
 	
 	for (unsigned int i = 0; i < hourlyAvgFootfall.size(); i++)
 	{
-		MyFile << i <<" ,"<< hourlyAvgFootfall[i] <<"\n";
+		MyFile << i <<","<< hourlyAvgFootfall[i] <<"\n";
 	}
 	MyFile << "\n";
-	MyFile << " Day" << "," << "Average "<< "\n";
+	MyFile << "Day" << "," << "Average"<< "\n";
 	
 	for (unsigned int i = 0; i < dailyAvgFootfall.size(); i++)
 	{
-		MyFile << i << " ," << dailyAvgFootfall[i] << "\n";
+		MyFile << i << "," << dailyAvgFootfall[i] << "\n";
 	}
 	MyFile << "\n";
-	MyFile << "Peek Value in Month" << "," << "value" << "\n";
+	MyFile << "Month" << "," << "Value" << "\n";
 	MyFile << peakdate << "," << peakValue << "\n";
 	MyFile.close();
 }
 
-vector<int> getMonthandYear()
+vector<int> getMonthandYear(string str)
 {
-	string str;
-	getline(cin, str);
+	
 	vector<int> result;
 	stringstream sso(str);
 	int month_year = 0;
@@ -249,25 +304,35 @@ vector<int> getMonthandYear()
 	return result;
 }
 
+#ifndef RECEIVER_TEST
+
 int main()
 {
-	
-	vector<int> result = getMonthandYear();
+	//First line of Input is the Month and Year which we need to consider
+	string str;
+	getline(cin, str);
+	vector<int> result = getMonthandYear(str);
 
 	int month = checkMonth(result[0]);
-	
-	Receiver obj1(24,month);
+
+	Receiver obj1(24, month);
 	obj1.getSenderData();
-	
+
 	obj1.clearBuffer();
 
 	obj1.getAvgHourlyfootfall(24, 31);
 	obj1.getAvgDailyfootfall();
 	obj1.getPeekDailyfootfallMontly();
+	//cout << getPeek<<endl;
 	obj1.StoreInCSV();
 
 	return 0;
 }
+
+#endif // !1
+
+
+
 
 
 
