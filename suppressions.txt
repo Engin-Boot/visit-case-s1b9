@@ -1,3 +1,4 @@
 missingIncludeSystem:*
 *:catch.hpp
 *:Sender/test-all.cpp
+*:Receiver/Testcase.cpp
