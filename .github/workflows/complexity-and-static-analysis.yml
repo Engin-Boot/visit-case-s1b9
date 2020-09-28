@@ -23,4 +23,4 @@ jobs:
       run: $HOME/.local/bin/lizard --CCN 3 -x"./catch.hpp"
     
     - name: Static Analysis
-      run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver/Testcase.cpp -iSender/test-all.cpp .
+      run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver/Testcase.cpp -iReceiver/Receiver.cpp -iSender/test-all.cpp .
