@@ -1,5 +1,5 @@
 #pragma once
-#define RECEIVER_TEST
+//#define RECEIVER_TEST
 
 class Data
 {
