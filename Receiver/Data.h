@@ -1,9 +1,6 @@
 #pragma once
 #define RECEIVER_TEST
-#include<iostream>
-#include<string>
-#include<vector>
-using namespace std; 
+
 class Data
 {
 private:

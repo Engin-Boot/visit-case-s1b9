@@ -3,10 +3,12 @@
 #include<sstream>
 #include<fstream>
 #include<iomanip>
-
+#include<iostream>
+#include<string>
+#include<vector>
 using namespace std;
 
-std::vector<int> DaysInTheMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
+vector<int> DaysInTheMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 Data::Data()
 {

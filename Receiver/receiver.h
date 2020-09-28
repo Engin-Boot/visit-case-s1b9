@@ -1,5 +1,7 @@
 #pragma once
 #include "Data.h"
+#include<vector>
+#include<string>
 
 class Receiver
 {
@@ -37,7 +39,6 @@ public:
 	void clearBuffer();
 	void storeCountInVector();
 
-	void getAvgHourlyfootfall();
 	void getAvgHourlyfootfall(int, int);
 	void getAvgDailyfootfall();
 	int getPeekDailyfootfallMontly();
